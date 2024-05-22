@@ -1,0 +1,10 @@
+package com.demo.multipayment.repositories;
+
+import com.demo.multipayment.entities.concretes.Account;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AccountRepository extends JpaRepository<Account, Integer> {
+
+    Account findByAccountNumber(String accountNumber);
+
+}

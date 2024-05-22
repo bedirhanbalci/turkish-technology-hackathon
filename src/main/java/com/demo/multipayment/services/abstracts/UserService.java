@@ -19,4 +19,5 @@ public interface UserService extends UserDetailsService {
     GetByIdUserResponse getById(Integer id);
 
     List<GetAllUsersResponse> getAll();
+
 }

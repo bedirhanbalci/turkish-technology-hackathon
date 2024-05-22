@@ -55,4 +55,5 @@ public class AuthManager implements AuthService {
                 .id(user.getId())
                 .build();
     }
+
 }

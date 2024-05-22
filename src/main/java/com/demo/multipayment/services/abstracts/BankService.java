@@ -19,10 +19,17 @@ public interface BankService {
     void update(UpdateBankRequest updateBankRequest);
 
     GetByIdBankResponse getById(Integer id);
+
     List<GetAllBanksResponse> getAll();
-     BankStatus requestBank(String cardNumber, Float amount);
-     Bank findBankByCardNumber(String cardNumber);
-     Account findAccountByCardNumber(String cardNumber);
-     void paymentProccess(String cardNumber, Float amount);
-    BankDepositResponse bankDepositResponse (BankDepositeRequest bankDepositeRequest);
+
+    BankStatus requestBank(String cardNumber, Float amount);
+
+    Bank findBankByCardNumber(String cardNumber);
+
+    Account findAccountByCardNumber(String cardNumber);
+
+    void paymentProccess(String cardNumber, Float amount);
+
+    BankDepositResponse bankDepositResponse(BankDepositeRequest bankDepositeRequest);
+
 }

@@ -58,8 +58,8 @@ public class BankController {
     }
 
     @PostMapping("/requestBank")
-    public BankDepositResponse bankDepositResponse (@RequestBody BankDepositeRequest bankDepositeRequest) {
-        return  this.bankService.bankDepositResponse(bankDepositeRequest);
+    public BankDepositResponse bankDepositResponse(@RequestBody BankDepositeRequest bankDepositeRequest) {
+        return this.bankService.bankDepositResponse(bankDepositeRequest);
     }
 
 }

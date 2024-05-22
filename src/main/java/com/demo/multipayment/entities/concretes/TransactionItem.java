@@ -4,7 +4,6 @@ import com.demo.multipayment.entities.abstracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
 @Table(name = "transactionItems")
 @Entity
 @Getter
@@ -14,7 +13,20 @@ import java.util.Date;
 @Builder
 public class TransactionItem extends BaseEntity {
 
+    @Column(name = "transaction_uuid")
     private String transactionUUid;
+
+    @Column(name = "amount")
+    private Float amount;
+
+    @Column(name = "checkout_id")
+    private Integer checkoutId;
+
+    @Column(name = "bank_name")
+    private String bankName;
+
+    @Column(name = "account_number")
+    private String accountNumber;
 
     @ManyToOne
     @JoinColumn(name = "bank_id")
@@ -24,11 +36,4 @@ public class TransactionItem extends BaseEntity {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    private Float amount;
-
-    private Integer checkoutId;
-
-    private String bankName;
-
-    private String accountNumber;
 }

@@ -23,11 +23,12 @@ public class Bank extends BaseEntity {
     @Column(name = "card_prefix")
     private String cardPrefix;
 
-    @OneToMany(mappedBy = "bank")
-    private List<Account> accounts;
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private BankStatus status;
+
+    @OneToMany(mappedBy = "bank")
+    private List<Account> accounts;
 
     @OneToMany(mappedBy = "bank")
     private List<TransactionItem> transactionItems;

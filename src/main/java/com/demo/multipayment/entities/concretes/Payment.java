@@ -19,6 +19,12 @@ public class Payment extends BaseEntity {
     @Column(name = "bank_name")
     private String bankName;
 
+    @Column(name = "card_prefix")
+    private String cardPrefix;
+
+    @Column(name = "transaction_id")
+    private String transactionId;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private PaymentStatus status;
@@ -26,12 +32,5 @@ public class Payment extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "checkout_id")
     private Checkout checkout;
-
-    private String cardPrefix;
-
-    private String transactionId;
-
-
-
 
 }

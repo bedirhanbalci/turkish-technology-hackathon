@@ -22,8 +22,6 @@ public interface BankService {
 
     List<GetAllBanksResponse> getAll();
 
-    BankStatus requestBank(String cardNumber, Float amount);
-
     Bank findBankByCardNumber(String cardNumber);
 
     Account findAccountByCardNumber(String cardNumber);

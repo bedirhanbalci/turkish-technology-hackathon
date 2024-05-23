@@ -96,19 +96,21 @@ public class BankManager implements BankService {
 
     @Override
     public BankDepositResponse bankDepositResponse(BankDepositeRequest bankDepositeRequest) {
-
         Bank bank = findBankByCardNumber(bankDepositeRequest.getCardNumber());
         if (bank == null) {
             bank.setStatus(BankStatus.FAILED);
+            return BankDepositResponse.builder()
+                    .bankStatus(BankStatus.FAILED)
+                    .build();
         }
         Account account = findAccountByCardNumber(bankDepositeRequest.getCardNumber());
         if (account == null || account.getBalance() < bankDepositeRequest.getAmount()) {
             bank.setStatus(BankStatus.FAILED);
+            return BankDepositResponse.builder()
+                    .bankStatus(BankStatus.FAILED)
+                    .build();
         }
 
-        if (account == null || account.getBalance() < bankDepositeRequest.getAmount()) {
-            bank.setStatus(BankStatus.FAILED);
-        }
         String transactionId = UUID.randomUUID().toString();
         TransactionItem transactionItem = TransactionItem.builder()
                 .transactionUUid(transactionId)
@@ -129,25 +131,6 @@ public class BankManager implements BankService {
                 .transactionId(transactionId)
                 .build();
         return bankDepositResponse;
-
-    }
-
-    @Override
-    public BankStatus requestBank(String cardNumber, Float amount) {
-
-        Bank bank = findBankByCardNumber(cardNumber);
-        if (bank == null) {
-            bank.setStatus(BankStatus.FAILED);
-            return BankStatus.FAILED;
-        }
-        Account account = findAccountByCardNumber(cardNumber);
-        if (account == null || account.getBalance() < amount) {
-            bank.setStatus(BankStatus.FAILED);
-            return BankStatus.FAILED;
-        }
-        bank.setStatus(BankStatus.APPROVE);
-        return BankStatus.APPROVE;
-
     }
 
     @Override

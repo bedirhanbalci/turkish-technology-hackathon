@@ -1,9 +1,7 @@
 package com.demo.multipayment.controllers;
 
 import com.demo.multipayment.services.abstracts.CheckoutService;
-import com.demo.multipayment.services.dtos.bank.requests.BankDepositeRequest;
 import com.demo.multipayment.services.dtos.checkout.requests.AddCheckoutRequest;
-import com.demo.multipayment.services.dtos.checkout.requests.OdemeRequest;
 import com.demo.multipayment.services.dtos.checkout.requests.UpdateCheckoutRequest;
 import com.demo.multipayment.services.dtos.checkout.responses.GetAllCheckoutsResponse;
 import com.demo.multipayment.services.dtos.checkout.responses.ResponseCheckoutId;
@@ -19,19 +17,12 @@ import java.util.List;
 @CrossOrigin
 public class CheckoutController {
 
-    private CheckoutService checkoutService;
+    private final CheckoutService checkoutService;
 
     @PostMapping("/save")
-    public ResponseCheckoutId saveCheckout(@RequestBody AddCheckoutRequest addCheckoutRequest){
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseCheckoutId saveCheckout(@RequestBody AddCheckoutRequest addCheckoutRequest) {
         return this.checkoutService.saveCheckout(addCheckoutRequest);
-    }
-    @PostMapping("/deposit")
-    public String depositCall(@RequestBody BankDepositeRequest bankDepositeRequest) {
-        return checkoutService.depozitCagri(bankDepositeRequest);
-    }
-    @PostMapping("/complete")
-    public void completePayment(@RequestBody OdemeRequest odemeRequest) {
-        checkoutService.odemeyitamamla(odemeRequest);
     }
 
     @PostMapping()

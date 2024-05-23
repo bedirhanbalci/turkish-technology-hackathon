@@ -5,18 +5,17 @@ import com.demo.multipayment.services.dtos.payment.requests.PaymentRequest;
 import com.demo.multipayment.services.dtos.payment.requests.UpdatePaymentRequest;
 import com.demo.multipayment.services.dtos.payment.responses.GetAllPaymentsResponse;
 import com.demo.multipayment.services.dtos.payment.responses.GetByIdPaymentResponse;
+import com.demo.multipayment.services.dtos.payment.responses.PaymentDetailResponse;
 
 import java.util.List;
-import java.util.Map;
 
 public interface PaymentService {
 
-    //List<CreatePaymentResponse> createPayments(AddPaymentRequest addPaymentRequest);
-    Map<String, Object> createPayments(AddPaymentRequest addPaymentRequest);
+    void processPayment(String transactionId, List<PaymentDetailResponse.PaymentDetail> paymentDetails);
 
-    void processPayment(String transactionId);
+    void multiplePayment(PaymentRequest paymentRequest, List<PaymentDetailResponse.PaymentDetail> paymentDetails);
 
-    void multiplePayment(PaymentRequest paymentRequest);
+    PaymentDetailResponse getPaymentDetails(PaymentRequest paymentRequest);
 
     void add(AddPaymentRequest addPaymentRequest);
 
